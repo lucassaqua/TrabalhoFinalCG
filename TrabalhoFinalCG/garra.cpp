@@ -228,9 +228,43 @@ void drawScene(void) {
 	// drawing color
 	glColor3f(1.0f, 1.0f, 1.0f);
 
+	/*drawDisk(diameterCylinder, diameterBase + 1.4);
+	glRotatef(angleClampY + 15, 0.0f, 1.0f, 0.0f);*/
+
+	drawDisk(0 , diameterBase+1.4); //disco inferior do corpo              //tentar colocar no lugar do disco da garra uma esfera (pra servir como ombro)
+	drawCylinder(diameterCylinder +3, sizeArm+2 ); //corpo                   // tentar colocar tres esferas abaixo do robo pra servirem como rodas 
+	glTranslatef(0.0f, 0.0f, sizeArm + 2); //sobe o referencial para os 'ombros do robo'
+
+	drawDisk(0, diameterBase + 1.4); //disco superior do corpo 
+
+	
+	drawSphere(3); //cabeça
+
+	// daqui dá pra puxar as antenas e talvez as pernas também 
+
+	glTranslatef(0.8f, 2.7f, 1); //muda o referencial para colocar o olho
+	drawSphere(0.3); // olho esquerdo
+
+	glTranslatef(-1.6f, 0.0f, 0); //distancia entre os olhos
+	drawSphere(0.3); // olho direito
+
+	glTranslatef(0.8f, -2.7f, -1); //desfaz a mudança de referencial feita pra posicionar os olhos //////////////////////////////////
+
+	glTranslatef(2.0f, 0.0f, -1 ); //-1 abaixou o braço pra altura dos ombros
+	
+	//glTranslatef(2.0f, 0.0f, heightBase*9.1);
+	//drawCylinder(diameterCylinder + 3, sizeArm);
+	glRotatef(angleClampY + 90, 0.0f, 1.0f, 0.0f);
+	//glTranslatef(1.5f, 0.0f, heightBase * 9.1);
+
+	
+
+	
+	
+
 	// draws the base
 	drawCylinder(diameterBase, heightBase);
-	glTranslatef(0.0f, 0.0f, heightBase);
+	glTranslatef(0.0f, 0.0f, heightBase);  //heightBase *6 afasta as figuras 
 	drawDisk(diameterCylinder, diameterBase);
 
 	// move to arm referential
@@ -238,6 +272,8 @@ void drawScene(void) {
 
 	//draws the arm
 	drawCylinder(diameterCylinder, sizeArm);
+
+	
 
 	// move to forearm referential
 	glTranslatef(0.0f, 0.0f, sizeArm + diameterSphere / 5);
@@ -296,6 +332,12 @@ void drawScene(void) {
 	glTranslatef(0.0f, 0.0f, diameterSphere / 15);
 	glRotatef(60, 0.0f, 1.0f, 0.0f);
 	drawCone(diameterCylinder / 3, sizeClampPart);
+
+
+	/*glRotatef(angleClampY + 90, 0.0f, 1.0f, 0.0f); isso coloca uma serra eletrica na mao do robo
+	drawDisk(diameterCylinder, diameterBase + 1.4);*/
+
+	
 
 	glPopMatrix();
 
