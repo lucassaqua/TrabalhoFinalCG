@@ -251,21 +251,23 @@ void drawScene(void) {
 	glTranslatef(0.8f, -2.7f, -1); //desfaz a mudança de referencial feita pra posicionar os olhos //////////////////////////////////
 
 	glTranslatef(2.0f, 0.0f, -1 ); //-1 abaixou o braço pra altura dos ombros
+
+	glTranslatef(1.4f, 0.0f, 0); // posiciona o braço
 	
 	//glTranslatef(2.0f, 0.0f, heightBase*9.1);
 	//drawCylinder(diameterCylinder + 3, sizeArm);
 	glRotatef(angleClampY + 90, 0.0f, 1.0f, 0.0f);
 	//glTranslatef(1.5f, 0.0f, heightBase * 9.1);
-
-	
-
 	
 	
 
-	// draws the base
-	drawCylinder(diameterBase, heightBase);
-	glTranslatef(0.0f, 0.0f, heightBase);  //heightBase *6 afasta as figuras 
-	drawDisk(diameterCylinder, diameterBase);
+	
+	
+	drawSphere(diameterSphere + 0.4); // ombro
+	//// draws the base
+	//drawCylinder(diameterBase, heightBase);
+	//glTranslatef(0.0f, 0.0f, heightBase);  //heightBase *6 afasta as figuras 
+	//drawDisk(diameterCylinder, diameterBase);
 
 	// move to arm referential
 	glRotatef(angleArm, 0.0f, 0.0f, 1.0f);
