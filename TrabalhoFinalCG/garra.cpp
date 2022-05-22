@@ -230,14 +230,13 @@ void drawScene(void) {
 	// drawing color
 	glColor3f(1.0f, 1.0f, 1.0f);
 
-	drawDisk(0, diameterBase + 1.4); //disco inferior do corpo 
+	drawDisk(0, diameterBase + 1.4); // disco inferior do corpo 
 	
-	glRotatef(angleClampY + 180, 0.0f, 1.0f, 0.0f); //vira para baixo para fazer as pernas
+	glRotatef(angleClampY + 180, 0.0f, 1.0f, 0.0f); // vira para baixo para fazer as pernas
 	glTranslatef(1.6f, 0.0f, 0);
 
-	drawSphere(diameterSphere + 0.4);
-	drawCylinder(diameterCylinder, sizeArm);
-	//drawSphere(diameterSphere + 1); //para colocar o pe/joelho tem que usar o translate antes
+	drawSphere(diameterSphere + 0.4);  // conexão da perna
+	drawCylinder(diameterCylinder, sizeArm); // perna 
 
 	glTranslatef(-1.6f, 0.0f, 0); // volta para o centro
 	glTranslatef(-1.6f, 0.0f, 0); // chega para esquerda
@@ -254,7 +253,19 @@ void drawScene(void) {
 
 	drawSphere(3); // cabeça
 
-	// daqui dá pra puxar as antenas 
+	//////////////////////////////    antenas 
+	glTranslatef(0.0f, 0.0f, 1);
+	
+	glRotatef(35, 0.0f, 1.0f, 0.0f);
+	drawCylinder(0.1, sizeArm - 1.5);
+
+	glRotatef(-70, 0.0f, 1.0f, 0.0f);
+	drawCylinder(0.1, sizeArm - 1.5);
+
+	glRotatef(35, 0.0f, 1.0f, 0.0f);
+	glTranslatef(0.0f, 0.0f, -1.5);
+	//////////////////////////////////
+	
 
 	glTranslatef(0.8f, 2.7f, 1); // muda o referencial para colocar o olho
 	drawSphere(0.3); // olho direito ( do ponto de vista do robo )
@@ -262,16 +273,14 @@ void drawScene(void) {
 	glTranslatef(-1.6f, 0.0f, 0); // espaça os olhos
 	drawSphere(0.3); // olho esquerdo
 
-	glTranslatef(0.8f, -2.7f, -1); // desfaz a mudança de referencial feita pra posicionar os olhos 
+	glTranslatef(0.8f, -2.7f, -1); // desfaz a mudança de referencial feita para posicionar os olhos 
 
 	glTranslatef(2.0f, 0.0f, -1); // abaixou o braço pra altura dos ombros
 
 
-
 	/////////////////////////////////////////////////////////// braço esquerdo
-	glTranslatef(-5.2f, 0.0f, 0);
-	glRotatef( 180, 0.0f, 1.0f, 0.0f);
-	glRotatef(90, 0.0f, 1.0f, 0.0f);
+	glTranslatef(-5.4f, 0.0f, 0);
+	glRotatef(270, 0.0f, 1.0f, 0.0f);
 
 	drawSphere(diameterSphere + 0.4); // ombro
 	glRotatef(angleArm, 0.0f, 0.0f, 1.0f);
@@ -298,7 +307,7 @@ void drawScene(void) {
 	glRotatef(-angleArm, 0.0f, 0.0f, 1.0f);                      //      
 	glRotatef(-90, 0.0f, 1.0f, 0.0f);                           //
 	glRotatef(-180, 0.0f, 1.0f, 0.0f);                         //
-	glTranslatef(5.2f, 0.0f, 0);                              //
+	glTranslatef(5.4f, 0.0f, 0);                              //
 
 	/////////////////////////////////////////////////////////
 
@@ -309,11 +318,6 @@ void drawScene(void) {
 
 
 	drawSphere(diameterSphere + 0.4); // ombro
-
-	//// draws the base
-	//drawCylinder(diameterBase, heightBase);
-	//glTranslatef(0.0f, 0.0f, heightBase);  // antiga base nao serve mais
-	//drawDisk(diameterCylinder, diameterBase);
 
 	// move to arm referential
 	glRotatef(angleArm, 0.0f, 0.0f, 1.0f);
@@ -379,9 +383,6 @@ void drawScene(void) {
 	glRotatef(60, 0.0f, 1.0f, 0.0f);
 	drawCone(diameterCylinder / 3, sizeClampPart);
 
-	/*glRotatef(angleClampY + 90, 0.0f, 1.0f, 0.0f); isso coloca uma serra na mao do robo
-	drawDisk(diameterCylinder, diameterBase + 1.4);*/
-
 	glPopMatrix();
 
 	glutSwapBuffers();
@@ -390,8 +391,8 @@ void drawScene(void) {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(800, 800);
-	glutCreateWindow("Garra");
+	glutInitWindowSize(1000, 1000);
+	glutCreateWindow("Android");
 
 	initLighting();
 	initRendering();
