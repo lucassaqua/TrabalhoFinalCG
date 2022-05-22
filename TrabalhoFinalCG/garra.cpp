@@ -257,10 +257,10 @@ void drawScene(void) {
 	// daqui dá pra puxar as antenas 
 
 	glTranslatef(0.8f, 2.7f, 1); // muda o referencial para colocar o olho
-	drawSphere(0.3); // olho esquerdo
+	drawSphere(0.3); // olho direito ( do ponto de vista do robo )
 
 	glTranslatef(-1.6f, 0.0f, 0); // espaça os olhos
-	drawSphere(0.3); // olho direito
+	drawSphere(0.3); // olho esquerdo
 
 	glTranslatef(0.8f, -2.7f, -1); // desfaz a mudança de referencial feita pra posicionar os olhos 
 
@@ -268,7 +268,7 @@ void drawScene(void) {
 
 
 
-	/////////////////////////////////////////////////////////// braço direito
+	/////////////////////////////////////////////////////////// braço esquerdo
 	glTranslatef(-5.2f, 0.0f, 0);
 	glRotatef( 180, 0.0f, 1.0f, 0.0f);
 	glRotatef(90, 0.0f, 1.0f, 0.0f);
@@ -288,10 +288,14 @@ void drawScene(void) {
 	glTranslatef(0.0f, 0.0f, diameterSphere / 5);
 	drawCylinder(diameterCylinder, sizeForearm);
 
+	glTranslatef(0.0f, 0.0f, sizeForearm + diameterSphere / 5);
+	drawSphere(diameterSphere -0.1);
+
+	glTranslatef(0.0f, 0.0f, -(sizeForearm + diameterSphere / 5));   //
 	glTranslatef(0.0f, 0.0f, -(diameterSphere / 5));                //
 	glRotatef(-angleForearm, 0.0f, 1.0f, 0.0f);                    //
-	glTranslatef(0.0f, 0.0f, -(sizeArm + diameterSphere / 5));    //   
-	glRotatef(-angleArm, 0.0f, 0.0f, 1.0f);                      //      "Reseta" o referencial
+	glTranslatef(0.0f, 0.0f, -(sizeArm + diameterSphere / 5));    //     "Reseta" o referencial
+	glRotatef(-angleArm, 0.0f, 0.0f, 1.0f);                      //      
 	glRotatef(-90, 0.0f, 1.0f, 0.0f);                           //
 	glRotatef(-180, 0.0f, 1.0f, 0.0f);                         //
 	glTranslatef(5.2f, 0.0f, 0);                              //
