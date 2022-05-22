@@ -239,32 +239,32 @@ void drawScene(void) {
 	drawCylinder(diameterCylinder, sizeArm);
 	//drawSphere(diameterSphere + 1); //para colocar o pe/joelho tem que usar o translate antes
 
-	glTranslatef(-1.6f, 0.0f, 0); //vai pro centro
-	glTranslatef(-1.6f, 0.0f, 0); //chega pra esquerda
-	drawSphere(diameterSphere + 0.4);
-	drawCylinder(diameterCylinder, sizeArm);
+	glTranslatef(-1.6f, 0.0f, 0); // volta para o centro
+	glTranslatef(-1.6f, 0.0f, 0); // chega para esquerda
+	drawSphere(diameterSphere + 0.4); // conexão da perna
+	drawCylinder(diameterCylinder, sizeArm); // perna 
 
-	glTranslatef(1.6f, 0.0f, 0); //volta pro centro
-	glRotatef(angleClampY + 180, 0.0f, 1.0f, 0.0f); //gira pra cima
+	glTranslatef(1.6f, 0.0f, 0); // volta para o centro
+	glRotatef(angleClampY + 180, 0.0f, 1.0f, 0.0f); // gira para cima
 	
-	drawCylinder(diameterCylinder + 3, sizeArm + 2); //corpo 
-	glTranslatef(0.0f, 0.0f, sizeArm + 2); //sobe o referencial para os 'ombros do robo'
+	drawCylinder(diameterCylinder + 3, sizeArm + 2); // corpo 
+	glTranslatef(0.0f, 0.0f, sizeArm + 2); // sobe o referencial para altura dos 'ombros do robo'
 
-	drawDisk(0, diameterBase + 1.4); //disco superior do corpo 
+	drawDisk(0, diameterBase + 1.4); // disco superior do corpo 
 
-	drawSphere(3); //cabeça
+	drawSphere(3); // cabeça
 
-	// daqui dá pra puxar as antenas e talvez as pernas também 
+	// daqui dá pra puxar as antenas 
 
-	glTranslatef(0.8f, 2.7f, 1); //muda o referencial para colocar o olho
+	glTranslatef(0.8f, 2.7f, 1); // muda o referencial para colocar o olho
 	drawSphere(0.3); // olho esquerdo
 
-	glTranslatef(-1.6f, 0.0f, 0); //distancia entre os olhos
+	glTranslatef(-1.6f, 0.0f, 0); // espaça os olhos
 	drawSphere(0.3); // olho direito
 
-	glTranslatef(0.8f, -2.7f, -1); //desfaz a mudança de referencial feita pra posicionar os olhos //////////////////////////////////
+	glTranslatef(0.8f, -2.7f, -1); // desfaz a mudança de referencial feita pra posicionar os olhos 
 
-	glTranslatef(2.0f, 0.0f, -1); //-1 abaixou o braço pra altura dos ombros
+	glTranslatef(2.0f, 0.0f, -1); // abaixou o braço pra altura dos ombros
 
 
 
@@ -288,7 +288,6 @@ void drawScene(void) {
 	glTranslatef(0.0f, 0.0f, diameterSphere / 5);
 	drawCylinder(diameterCylinder, sizeForearm);
 
-
 	glTranslatef(0.0f, 0.0f, -(diameterSphere / 5));                //
 	glRotatef(-angleForearm, 0.0f, 1.0f, 0.0f);                    //
 	glTranslatef(0.0f, 0.0f, -(sizeArm + diameterSphere / 5));    //   
@@ -297,25 +296,19 @@ void drawScene(void) {
 	glRotatef(-180, 0.0f, 1.0f, 0.0f);                         //
 	glTranslatef(5.2f, 0.0f, 0);                              //
 
-	///////////////////////////////////////////////////////////////
-
+	/////////////////////////////////////////////////////////
 
 
 	glTranslatef(1.4f, 0.0f, 0); // posiciona o braço
 
-	//glTranslatef(2.0f, 0.0f, heightBase*9.1);
-	//drawCylinder(diameterCylinder + 3, sizeArm);
 	glRotatef(angleClampY + 90, 0.0f, 1.0f, 0.0f);
-	//glTranslatef(1.5f, 0.0f, heightBase * 9.1);
-
-
-	
 
 
 	drawSphere(diameterSphere + 0.4); // ombro
+
 	//// draws the base
 	//drawCylinder(diameterBase, heightBase);
-	//glTranslatef(0.0f, 0.0f, heightBase);  //heightBase *6 afasta as figuras 
+	//glTranslatef(0.0f, 0.0f, heightBase);  // antiga base nao serve mais
 	//drawDisk(diameterCylinder, diameterBase);
 
 	// move to arm referential
@@ -323,8 +316,6 @@ void drawScene(void) {
 
 	//draws the arm
 	drawCylinder(diameterCylinder, sizeArm);
-
-
 
 	// move to forearm referential
 	glTranslatef(0.0f, 0.0f, sizeArm + diameterSphere / 5);
@@ -384,11 +375,8 @@ void drawScene(void) {
 	glRotatef(60, 0.0f, 1.0f, 0.0f);
 	drawCone(diameterCylinder / 3, sizeClampPart);
 
-
 	/*glRotatef(angleClampY + 90, 0.0f, 1.0f, 0.0f); isso coloca uma serra na mao do robo
 	drawDisk(diameterCylinder, diameterBase + 1.4);*/
-
-
 
 	glPopMatrix();
 
